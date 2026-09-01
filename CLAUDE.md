@@ -1,7 +1,7 @@
 # GoEn - Claude Development Context
 
 **Project**: 碁縁（GoEn） - Premium adult Go learning app
-**Status**: Phase 1 (Foundation) - Foundational setup complete
+**Status**: Phase 3 (Riverpod Providers) - State management layer complete
 **Last Updated**: 2026-09-01
 
 ## Quick Reference
@@ -35,42 +35,45 @@ Implemented & ready to use:
 - `KifuLibrary` - Historical & user games
 - `ObservationLog` - Game observation tracking
 
-Import via: `import 'package:goen/models/index.dart';`
+Import models via: `import 'package:goen/models/index.dart';`
+Import services via: `import 'package:goen/services/index.dart';`
+Import providers via: `import 'package:goen/viewmodels/index.dart';`
 
 ### MVVM Architecture
-- **Models**: Pure Firestore-mappable data classes (lib/models/)
-- **Services**: Business logic & API calls (lib/services/) → Not yet created
-- **ViewModels**: Riverpod providers (lib/viewmodels/) → Not yet created
-- **Views**: Screens & widgets (lib/views/) → Main placeholder only
+- **Models**: Pure Firestore-mappable data classes (lib/models/) ✅
+- **Services**: Business logic & API calls (lib/services/) ✅
+- **ViewModels**: Riverpod providers (lib/viewmodels/) ✅
+- **Views**: Screens & widgets (lib/views/) → Building now
 
 ### Next Steps
 
-**Phase 1 (In Progress):**
+**Phase 1 (Foundation) - Complete ✅**
 - [x] pubspec.yaml with all dependencies
 - [x] Directory structure & configuration
 - [x] Data models (User, GameRecord, TsumeGoProblem, etc.)
 - [x] Theme config (dark mode, premium aesthetic)
 - [x] README & documentation
 
-**Phase 2 (Next - Services Layer):**
-- [ ] `GoEngineService` - Cloud Functions API wrapper for GNU Go
-- [ ] `FirestoreService` - Firestore CRUD operations
-- [ ] `AuthService` - Firebase Authentication
-- [ ] `AIExplanationService` - Commentary generation
-- [ ] Error handling & retry logic
+**Phase 2 (Services Layer) - Complete ✅**
+- [x] `GoEngineService` - Cloud Functions API wrapper for GNU Go
+- [x] `FirestoreService` - Firestore CRUD operations
+- [x] `AuthService` - Firebase Authentication
+- [x] `AIExplanationService` - Commentary generation
+- [x] Error handling & retry logic
 
-**Phase 3 (Riverpod Providers):**
-- [ ] `authProvider` - Current user state
-- [ ] `gameProvider` - Active game state
-- [ ] `tsumeGoProvider` - Puzzle state
-- [ ] `analyticsProvider` - Event tracking
+**Phase 3 (Riverpod Providers) - Complete ✅**
+- [x] `authProvider` - Current user state (5 state + 9 action providers)
+- [x] `gameProvider` - Active game state (13 providers for board/AI/records)
+- [x] `tsumeGoProvider` - Puzzle state (14 providers for puzzles/streak/history)
+- [x] `analyticsProvider` - Event tracking (15 event logging providers)
+- [x] Provider documentation (PROVIDERS.md with usage examples)
 
-**Phase 4 (Core Screens - Aha Path):**
-- [ ] `SplashScreen` - App initialization
-- [ ] `OnboardingScreen` - 3-card rule tutorial
+**Phase 4 (Core Screens - Aha Path) - Next:**
+- [ ] `SplashScreen` - App initialization & routing
+- [ ] `OnboardingScreen` - 3-card rule tutorial & navigation
 - [ ] `HomeScreen` - Main hub (Game/Puzzle/Observe/History)
 - [ ] `AIGameScreen` - Live gameplay (Priority: capture stone first move)
-- [ ] `GameResultScreen` - Post-game summary
+- [ ] `GameResultScreen` - Post-game summary & analysis
 
 **Phase 5 (Supporting Features):**
 - [ ] `TsumeGoScreen` - Daily puzzle
@@ -177,6 +180,9 @@ analytics.logEvent(
 | `lib/main.dart` | Entry point |
 | `lib/config/theme.dart` | Dark theme & colors |
 | `lib/models/index.dart` | All data models |
+| `lib/services/index.dart` | Business logic layer |
+| `lib/viewmodels/index.dart` | Riverpod state management |
+| `lib/viewmodels/PROVIDERS.md` | Provider usage guide |
 | `README.md` | Full project documentation |
 | `CLAUDE.md` | This file - quick reference |
 
@@ -222,4 +228,8 @@ None yet - track here as they arise.
 
 ---
 
-**Created**: 2026-09-01 | Phase 1 (Foundation) Complete ✅
+**Timeline**:
+- 2026-09-01 | Phase 1 (Foundation) Complete ✅
+- 2026-09-01 | Phase 2 (Services Layer) Complete ✅  
+- 2026-09-01 | Phase 3 (Riverpod Providers) Complete ✅
+- 2026-09-01 | Phase 4 (Core Screens) → In Progress
