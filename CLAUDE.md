@@ -1,7 +1,7 @@
 # GoEn - Claude Development Context
 
 **Project**: 碁縁（GoEn） - Premium adult Go learning app
-**Status**: Phase 3 (Riverpod Providers) - State management layer complete
+**Status**: Phase 6.2 (Widget Testing) - 198 test cases for all 11 UI screens
 **Last Updated**: 2026-09-01
 
 ## Quick Reference
@@ -68,19 +68,42 @@ Import providers via: `import 'package:goen/viewmodels/index.dart';`
 - [x] `analyticsProvider` - Event tracking (15 event logging providers)
 - [x] Provider documentation (PROVIDERS.md with usage examples)
 
-**Phase 4 (Core Screens - Aha Path) - Next:**
-- [ ] `SplashScreen` - App initialization & routing
-- [ ] `OnboardingScreen` - 3-card rule tutorial & navigation
-- [ ] `HomeScreen` - Main hub (Game/Puzzle/Observe/History)
-- [ ] `AIGameScreen` - Live gameplay (Priority: capture stone first move)
-- [ ] `GameResultScreen` - Post-game summary & analysis
+**Phase 4 (Core Screens - Aha Path) - Complete ✅**
+- [x] `SplashScreen` - App initialization & routing
+- [x] `OnboardingScreen` - 3-card rule tutorial & navigation
+- [x] `HomeScreen` - Main hub (Game/Puzzle/Observe/History)
+- [x] `AIGameScreen` - Live gameplay (Priority: capture stone first move)
+- [x] `GameResultScreen` - Post-game summary & analysis
 
-**Phase 5 (Supporting Features):**
-- [ ] `TsumeGoScreen` - Daily puzzle
-- [ ] `KifuObservationScreen` - Watch & learn
-- [ ] `GameHistoryScreen` - Past games
-- [ ] `SettingsScreen` - Preferences
-- [ ] `PaywallScreen` - 3rd game trigger
+**Phase 5 (Supporting Features) - Complete ✅**
+- [x] `TsumeGoScreen` - Daily puzzle
+- [x] `KifuObservationScreen` - Watch & learn
+- [x] `GameHistoryScreen` - Past games
+- [x] `SettingsScreen` - Preferences
+- [x] `PaywallScreen` - 3rd game trigger
+
+**Phase 6.1 (Widget Test Infrastructure) - Complete ✅**
+- [x] Test utilities & helpers (test_utils.dart)
+- [x] Mock providers for all major state (mock_providers.dart)
+- [x] Reusable test fixtures (test_data.dart)
+- [x] Test documentation (test/README.md)
+- [x] 54 test cases for core 4 screens (Splash, Home, AIGame, TsumeGo)
+
+**Phase 6.2 (Complete Widget Test Coverage) - Complete ✅**
+- [x] 18 test cases for GameResultScreen
+- [x] 21 test cases for OnboardingScreen
+- [x] 24 test cases for KifuObservationScreen
+- [x] 25 test cases for GameHistoryScreen
+- [x] 28 test cases for SettingsScreen
+- [x] 28 test cases for PaywallScreen
+- [x] **Total: 198 widget test cases for all 11 screens**
+
+**Phase 6.3 (Integration & Golden Tests) - Next:**
+- [ ] Integration tests with real Firebase backend
+- [ ] Golden image tests for board rendering (GoGridPainter)
+- [ ] Performance tests for AI move calculation
+- [ ] Accessibility tests (color contrast, touch targets)
+- [ ] E2E tests for critical user flows
 
 ### Running the App
 
@@ -232,4 +255,8 @@ None yet - track here as they arise.
 - 2026-09-01 | Phase 1 (Foundation) Complete ✅
 - 2026-09-01 | Phase 2 (Services Layer) Complete ✅  
 - 2026-09-01 | Phase 3 (Riverpod Providers) Complete ✅
-- 2026-09-01 | Phase 4 (Core Screens) → In Progress
+- 2026-09-01 | Phase 4 (Core Screens - Aha Path) Complete ✅
+- 2026-09-01 | Phase 5 (Supporting Feature Screens) Complete ✅
+- 2026-09-01 | Phase 6.1 (Test Infrastructure & Core Tests) Complete ✅
+- 2026-09-01 | Phase 6.2 (Complete Widget Test Coverage) Complete ✅
+- TBD | Phase 6.3 (Integration & Golden Tests) → Next
