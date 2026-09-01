@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:logger/logger.dart';
 import 'firebase_options.dart';
 import 'config/theme.dart';
+import 'views/screens/index.dart';
+
+final _logger = Logger();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +15,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  _logger.i('Firebase initialized');
 
   runApp(
     const ProviderScope(
@@ -25,47 +31,109 @@ class GoEnApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
-      title: 'GoEn',
+      title: 'GoEn - 碁縁',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark, // Dark mode preferred for adults
+      themeMode: ThemeMode.dark, // Dark mode only for premium adults
       home: const SplashScreen(),
+      navigatorObservers: [
+        _AnalyticsNavigatorObserver(),
+      ],
+      routes: {
+        '/splash': (_) => const SplashScreen(),
+        '/onboarding': (_) => const OnboardingScreen(),
+        '/home': (_) => const HomeScreen(),
+        '/ai-game': (_) => const AIGameScreen(),
+        '/game-result': (_) => GameResultScreenRouter(),
+        // Future screens (Phase 5)
+        '/tsume-go': (_) => _PlaceholderScreen('Tsume-Go Puzzle'),
+        '/kifu-observation': (_) => _PlaceholderScreen('Watch Kifu'),
+        '/game-history': (_) => _PlaceholderScreen('My Games'),
+        '/settings': (_) => _PlaceholderScreen('Settings'),
+        '/paywall': (_) => _PlaceholderScreen('Upgrade to Premium'),
+      },
+      onUnknownRoute: (_) {
+        return MaterialPageRoute(
+          builder: (_) => _PlaceholderScreen('Not Found'),
+        );
+      },
     );
   }
 }
 
-/// Placeholder splash screen
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+/// Router for GameResultScreen - handles arguments
+class GameResultScreenRouter extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final args = ModalRoute.of(context)?.settings.arguments
+        as Map<String, dynamic>?;
+
+    return GameResultScreen(
+      result: args?['result'] ?? 'unknown',
+      blackScore: args?['blackScore'] as double?,
+      whiteScore: args?['whiteScore'] as double?,
+    );
+  }
+}
+
+/// Placeholder screen for features not yet implemented
+class _PlaceholderScreen extends StatelessWidget {
+  final String title;
+
+  const _PlaceholderScreen(this.title);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1a1a1a),
+      backgroundColor: Colors.black87,
+      appBar: AppBar(
+        title: Text(title),
+        backgroundColor: Colors.black,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Icon(
+              Icons.construction,
+              size: 64,
+              color: Colors.amber[600],
+            ),
+            const SizedBox(height: 24),
             Text(
-              '碁縁',
-              style: Theme.of(context).textTheme.displayLarge?.copyWith(
+              'Coming Soon',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
             Text(
-              'GoEn - Learn & Play Go',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: Colors.grey[400],
+              'This screen is under development',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Colors.white70,
               ),
             ),
-            const SizedBox(height: 32),
-            const CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(Colors.white),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Go Back'),
             ),
           ],
         ),
       ),
     );
+  }
+}
+
+/// Analytics observer for tracking screen views
+class _AnalyticsNavigatorObserver extends NavigatorObserver {
+  @override
+  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    _logger.i('Screen pushed: ${route.settings.name}');
+  }
+
+  @override
+  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
+    _logger.i('Screen popped: ${route.settings.name}');
   }
 }
