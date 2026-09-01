@@ -1,7 +1,7 @@
 # GoEn - Claude Development Context
 
 **Project**: 碁縁（GoEn） - Premium adult Go learning app
-**Status**: Phase 6.3 (Performance Testing) - 247 total tests (198 widget + 49 performance)
+**Status**: Phase 6.4 (Integration, Golden, E2E, Accessibility) - 298 total tests ✅
 **Last Updated**: 2026-09-01
 
 ## Quick Reference
@@ -106,12 +106,13 @@ Import providers via: `import 'package:goen/viewmodels/index.dart';`
 - [x] 10 UI responsiveness performance tests
 - [x] **Total: 49 performance tests validating all thresholds**
 
-**Phase 6.4 (Integration & Golden Tests) - Next:**
-- [ ] Integration tests with real Firebase backend
-- [ ] Golden image tests for board rendering (GoGridPainter)
-- [ ] E2E tests for critical user flows
-- [ ] Accessibility tests (color contrast, touch targets)
-- [ ] Custom painter unit tests
+**Phase 6.4 (Integration, Golden, E2E, Accessibility Tests) - Complete ✅**
+- [x] Integration tests (11 tests) - Real Firebase backend operations with transaction helpers
+- [x] Golden image tests (12 tests) - Visual regression testing for board rendering across board sizes & game states
+- [x] E2E tests (13 tests) - Complete user flows from splash through game completion & aha path
+- [x] Accessibility tests (15 tests) - WCAG 2.1 AA compliance (4.5:1 contrast, 44×44 dp touch targets, keyboard nav)
+- [x] Test documentation (README_PHASE_6_4.md) - Setup, running instructions, CI/CD integration
+- [x] **Total: 51 comprehensive tests across 4 dimensions**
 
 ### Running the App
 
@@ -268,4 +269,5 @@ None yet - track here as they arise.
 - 2026-09-01 | Phase 6.1 (Test Infrastructure & Core Tests) Complete ✅
 - 2026-09-01 | Phase 6.2 (Complete Widget Test Coverage) Complete ✅
 - 2026-09-01 | Phase 6.3 (Performance Testing) Complete ✅
-- TBD | Phase 6.4 (Integration & Golden Tests) → Next
+- 2026-09-01 | Phase 6.4 (Integration, Golden, E2E, Accessibility Tests) Complete ✅
+- TBD | Phase 6.5 (Advanced Testing: Custom Painter, Battery, Memory Profiling) → Next
