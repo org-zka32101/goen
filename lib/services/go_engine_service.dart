@@ -131,7 +131,7 @@ class GoEngineService {
             .call('requestAiMove');
 
         final result = await callable.call({
-          'boardState': _encodeBoardState(boardState),
+          'boardState': encodeboardState(boardState),
           'aiLevel': aiLevel,
           'movesCount': movesCount,
           'boardSize': boardState.boardSize,
@@ -245,7 +245,7 @@ class GoEngineService {
   }
 
   /// Encode board state for Cloud Function transmission
-  Map<String, dynamic> _encodeBoardState(BoardState state) {
+  Map<String, dynamic> encodeboardState(BoardState state) {
     return {
       'boardSize': state.boardSize,
       'stones': state.stones.map((row) => row.toList()).toList(),
