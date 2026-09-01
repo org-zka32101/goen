@@ -47,10 +47,10 @@ class GoEnApp extends ConsumerWidget {
         '/game-result': (_) => GameResultScreenRouter(),
         // Future screens (Phase 5)
         '/tsume-go': (_) => const TsumeGoScreen(),
-        '/kifu-observation': (_) => _PlaceholderScreen('Watch Kifu'),
-        '/game-history': (_) => _PlaceholderScreen('My Games'),
-        '/settings': (_) => _PlaceholderScreen('Settings'),
-        '/paywall': (_) => _PlaceholderScreen('Upgrade to Premium'),
+        '/kifu-observation': (_) => const KifuObservationScreen(),
+        '/game-history': (_) => const GameHistoryScreen(),
+        '/settings': (_) => const SettingsScreen(),
+        '/paywall': (_) => const PaywallScreen(),
       },
       onUnknownRoute: (_) {
         return MaterialPageRoute(
