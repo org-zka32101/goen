@@ -46,7 +46,7 @@ class GoEnApp extends ConsumerWidget {
         '/ai-game': (_) => const AIGameScreen(),
         '/game-result': (_) => GameResultScreenRouter(),
         // Future screens (Phase 5)
-        '/tsume-go': (_) => _PlaceholderScreen('Tsume-Go Puzzle'),
+        '/tsume-go': (_) => const TsumeGoScreen(),
         '/kifu-observation': (_) => _PlaceholderScreen('Watch Kifu'),
         '/game-history': (_) => _PlaceholderScreen('My Games'),
         '/settings': (_) => _PlaceholderScreen('Settings'),
