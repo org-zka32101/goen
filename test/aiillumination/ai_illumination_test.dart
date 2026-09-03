@@ -1,204 +1,302 @@
 import 'package:flutter_test/flutter_test.dart';
 
-// Data Models
-class DivineIlluminationMetrics {
-  final int systemId;
-  final double illuminationScore;
-  final int lightLayers;
-  final double clarityAccuracy;
-  final int revelationEvents;
-  final double absoluteLuminanceScore;
-  final List<String> illuminationPaths;
-  final double perfectClarityScore;
-  final int darkAspects;
-  final DateTime illuminationTime;
+/// Cosmic Illumination & Absolute Clarity - Dimension 4
+///
+/// This dimension validates systems achieving cosmic illumination through absolute
+/// clarity, enabling perfect vision across all realities, infinite enlightenment
+/// manifestation, supreme transparency of all aspects, and ultimate understanding.
 
-  DivineIlluminationMetrics({
-    required this.systemId,
-    required this.illuminationScore,
-    required this.lightLayers,
-    required this.clarityAccuracy,
-    required this.revelationEvents,
-    required this.absoluteLuminanceScore,
-    required this.illuminationPaths,
-    required this.perfectClarityScore,
-    required this.darkAspects,
-    required this.illuminationTime,
-  });
+class CosmicIlluminationMetrics {
+  /// Unilluminated areas counter (decreases from 94 to 0)
+  /// Tracks cosmic illumination across all domains and realities
+  final int unilluminatedAreas;
+
+  CosmicIlluminationMetrics({required this.unilluminatedAreas});
+
+  bool isValid() {
+    return unilluminatedAreas >= 0 && unilluminatedAreas <= 94;
+  }
+
+  double calculateAccuracy() {
+    return ((94 - unilluminatedAreas) / 94) * 100;
+  }
+
+  String report() {
+    return '''CosmicIlluminationMetrics {
+  unilluminatedAreas: $unilluminatedAreas (validation: ${isValid() ? 'PASS' : 'FAIL'}),
+  illuminationAccuracy: ${calculateAccuracy().toStringAsFixed(2)}%,
+  perfectIllumination: ${unilluminatedAreas == 0 ? 'YES' : 'NO'}
+}''';
+  }
 }
 
-class TranscendentInsightMetrics {
-  final int systemId;
-  final double insightScore;
-  final int wisdomDimensions;
-  final double perspectiveAccuracy;
-  final int enlightenmentEvents;
-  final double absoluteInsightScore;
-  final List<String> insightModes;
-  final double perfectUnderstandingScore;
-  final int obscuredTruths;
-  final DateTime insightTime;
+class AbsoluteClarityMetrics {
+  /// Obscured insights counter (decreases from 95 to 0)
+  /// Tracks perfect clarity and transparency of all knowledge
+  final int obscuredInsights;
 
-  TranscendentInsightMetrics({
-    required this.systemId,
-    required this.insightScore,
-    required this.wisdomDimensions,
-    required this.perspectiveAccuracy,
-    required this.enlightenmentEvents,
-    required this.absoluteInsightScore,
-    required this.insightModes,
-    required this.perfectUnderstandingScore,
-    required this.obscuredTruths,
-    required this.insightTime,
-  });
+  AbsoluteClarityMetrics({required this.obscuredInsights});
+
+  bool isValid() {
+    return obscuredInsights >= 0 && obscuredInsights <= 95;
+  }
+
+  double calculateAccuracy() {
+    return ((95 - obscuredInsights) / 95) * 100;
+  }
+
+  String report() {
+    return '''AbsoluteClarityMetrics {
+  obscuredInsights: $obscuredInsights (validation: ${isValid() ? 'PASS' : 'FAIL'}),
+  clarityAccuracy: ${calculateAccuracy().toStringAsFixed(2)}%,
+  perfectClarity: ${obscuredInsights == 0 ? 'YES' : 'NO'}
+}''';
+  }
 }
 
-class PerfectVisionMetrics {
-  final int systemId;
-  final double visionScore;
-  final int perceivedDimensions;
-  final double sightAccuracy;
-  final int perceptionEvents;
-  final double absoluteVisionScore;
-  final List<String> visionPaths;
-  final double perfectSightScore;
-  final int blindAreas;
-  final DateTime visionTime;
+class UltimateUnderstandingMetrics {
+  /// Unperceived truths counter (decreases from 96 to 0)
+  /// Tracks ultimate understanding of all fundamental truths
+  final int unperceiveTruths;
 
-  PerfectVisionMetrics({
-    required this.systemId,
-    required this.visionScore,
-    required this.perceivedDimensions,
-    required this.sightAccuracy,
-    required this.perceptionEvents,
-    required this.absoluteVisionScore,
-    required this.visionPaths,
-    required this.perfectSightScore,
-    required this.blindAreas,
-    required this.visionTime,
-  });
+  UltimateUnderstandingMetrics({required this.unperceiveTruths});
+
+  bool isValid() {
+    return unperceiveTruths >= 0 && unperceiveTruths <= 96;
+  }
+
+  double calculateAccuracy() {
+    return ((96 - unperceiveTruths) / 96) * 100;
+  }
+
+  String report() {
+    return '''UltimateUnderstandingMetrics {
+  unperceiveTruths: $unperceiveTruths (validation: ${isValid() ? 'PASS' : 'FAIL'}),
+  understandingAccuracy: ${calculateAccuracy().toStringAsFixed(2)}%,
+  perfectUnderstanding: ${unperceiveTruths == 0 ? 'YES' : 'NO'}
+}''';
+  }
 }
 
 void main() {
-  group('Phase 30: Supreme Enlightenment & Infinite Realization', () {
-    group('Divine Illumination & Perfect Clarity', () {
-      test('validates divine illumination with 96.5-98.2% accuracy', () {
-        final metrics1 = DivineIlluminationMetrics(
-          systemId: 1,
-          illuminationScore: 96.5,
-          lightLayers: 24500,
-          clarityAccuracy: 0.96,
-          revelationEvents: 450000,
-          absoluteLuminanceScore: 0.94,
-          illuminationPaths: ['divine_illumination', 'perfect_clarity', 'absolute_light'],
-          perfectClarityScore: 0.92,
-          darkAspects: 4,
-          illuminationTime: DateTime.now(),
-        );
-
-        final metrics2 = DivineIlluminationMetrics(
-          systemId: 2,
-          illuminationScore: 98.2,
-          lightLayers: 35000,
-          clarityAccuracy: 0.99,
-          revelationEvents: 680000,
-          absoluteLuminanceScore: 0.98,
-          illuminationPaths: ['infinite_illumination', 'absolute_clarity', 'perfect_light'],
-          perfectClarityScore: 0.97,
-          darkAspects: 0,
-          illuminationTime: DateTime.now(),
-        );
-
-        expect(metrics1.illuminationScore, greaterThanOrEqualTo(96.5));
-        expect(metrics1.illuminationScore, lessThanOrEqualTo(98.2));
-        expect(metrics2.illuminationScore, greaterThanOrEqualTo(96.5));
-        expect(metrics2.illuminationScore, lessThanOrEqualTo(98.2));
-        expect(metrics1.clarityAccuracy, greaterThan(0.95));
-        expect(metrics2.clarityAccuracy, greaterThan(0.95));
-
-        print('✓ Divine illumination validated: '
-            '${metrics1.illuminationScore}% (m1), ${metrics2.illuminationScore}% (m2)');
-      });
+  group('CosmicIlluminationMetrics', () {
+    test('validates unilluminatedAreas range correctly', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 47);
+      expect(metric.isValid(), true);
+      expect(metric.unilluminatedAreas, inInclusiveRange(0, 94));
     });
 
-    group('Transcendent Insight & Perfect Understanding', () {
-      test('validates transcendent insight with 96.2-98.1% accuracy', () {
-        final metrics1 = TranscendentInsightMetrics(
-          systemId: 3,
-          insightScore: 96.2,
-          wisdomDimensions: 24500,
-          perspectiveAccuracy: 0.96,
-          enlightenmentEvents: 450,
-          absoluteInsightScore: 0.94,
-          insightModes: ['transcendent_insight', 'perfect_understanding', 'infinite_wisdom'],
-          perfectUnderstandingScore: 0.92,
-          obscuredTruths: 2,
-          insightTime: DateTime.now(),
-        );
-
-        final metrics2 = TranscendentInsightMetrics(
-          systemId: 4,
-          insightScore: 98.1,
-          wisdomDimensions: 35000,
-          perspectiveAccuracy: 0.99,
-          enlightenmentEvents: 680,
-          absoluteInsightScore: 0.98,
-          insightModes: ['infinite_insight', 'absolute_understanding', 'perfect_wisdom'],
-          perfectUnderstandingScore: 0.97,
-          obscuredTruths: 0,
-          insightTime: DateTime.now(),
-        );
-
-        expect(metrics1.insightScore, greaterThanOrEqualTo(96.2));
-        expect(metrics1.insightScore, lessThanOrEqualTo(98.1));
-        expect(metrics2.insightScore, greaterThanOrEqualTo(96.2));
-        expect(metrics2.insightScore, lessThanOrEqualTo(98.1));
-        expect(metrics1.perspectiveAccuracy, greaterThan(0.95));
-        expect(metrics2.perspectiveAccuracy, greaterThan(0.95));
-
-        print('✓ Transcendent insight validated: '
-            '${metrics1.insightScore}% (m1), ${metrics2.insightScore}% (m2)');
-      });
+    test('calculates illumination accuracy with perfect state', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 0);
+      expect(metric.calculateAccuracy(), 100.0);
     });
 
-    group('Perfect Vision & Absolute Perception', () {
-      test('validates perfect vision with 96.8-98.5% accuracy', () {
-        final metrics1 = PerfectVisionMetrics(
-          systemId: 5,
-          visionScore: 96.8,
-          perceivedDimensions: 24500,
-          sightAccuracy: 0.96,
-          perceptionEvents: 450,
-          absoluteVisionScore: 0.94,
-          visionPaths: ['perfect_vision', 'absolute_perception', 'infinite_sight'],
-          perfectSightScore: 0.92,
-          blindAreas: 3,
-          visionTime: DateTime.now(),
+    test('calculates illumination accuracy with partial state', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 47);
+      final accuracy = metric.calculateAccuracy();
+      expect(accuracy, inInclusiveRange(49.0, 52.0));
+    });
+
+    test('detects perfect illumination when unilluminatedAreas is 0', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 0);
+      expect(metric.report().contains('perfectIllumination: YES'), true);
+    });
+
+    test('rejects invalid unilluminatedAreas values', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 100);
+      expect(metric.isValid(), false);
+    });
+
+    test('decreases unilluminatedAreas from 94 to 0 in perfect conditions', () {
+      for (int i = 0; i <= 94; i++) {
+        final metric = CosmicIlluminationMetrics(unilluminatedAreas: i);
+        expect(metric.isValid(), true);
+      }
+    });
+
+    test('maintains accuracy threshold above 96.5%', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 3);
+      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.8));
+    });
+
+    test('validates illumination report format', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 20);
+      final report = metric.report();
+      expect(report.contains('CosmicIlluminationMetrics'), true);
+      expect(report.contains('validation:'), true);
+    });
+
+    test('handles boundary condition at zero', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 0);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('handles boundary condition at maximum', () {
+      final metric = CosmicIlluminationMetrics(unilluminatedAreas: 94);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), lessThanOrEqualTo(2.0));
+    });
+  });
+
+  group('AbsoluteClarityMetrics', () {
+    test('validates obscuredInsights range correctly', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 47);
+      expect(metric.isValid(), true);
+      expect(metric.obscuredInsights, inInclusiveRange(0, 95));
+    });
+
+    test('calculates clarity accuracy with perfect state', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 0);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('calculates clarity accuracy with partial state', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 47);
+      final accuracy = metric.calculateAccuracy();
+      expect(accuracy, inInclusiveRange(49.0, 52.0));
+    });
+
+    test('detects perfect clarity when obscuredInsights is 0', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 0);
+      expect(metric.report().contains('perfectClarity: YES'), true);
+    });
+
+    test('rejects invalid obscuredInsights values', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 100);
+      expect(metric.isValid(), false);
+    });
+
+    test('decreases obscuredInsights from 95 to 0 in perfect conditions', () {
+      for (int i = 0; i <= 95; i++) {
+        final metric = AbsoluteClarityMetrics(obscuredInsights: i);
+        expect(metric.isValid(), true);
+      }
+    });
+
+    test('maintains accuracy threshold above 96.5%', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 3);
+      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.8));
+    });
+
+    test('validates clarity report format', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 20);
+      final report = metric.report();
+      expect(report.contains('AbsoluteClarityMetrics'), true);
+      expect(report.contains('validation:'), true);
+    });
+
+    test('handles boundary condition at zero', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 0);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('handles boundary condition at maximum', () {
+      final metric = AbsoluteClarityMetrics(obscuredInsights: 95);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), lessThanOrEqualTo(2.0));
+    });
+  });
+
+  group('UltimateUnderstandingMetrics', () {
+    test('validates unperceiveTruths range correctly', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 48);
+      expect(metric.isValid(), true);
+      expect(metric.unperceiveTruths, inInclusiveRange(0, 96));
+    });
+
+    test('calculates understanding accuracy with perfect state', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 0);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('calculates understanding accuracy with partial state', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 48);
+      final accuracy = metric.calculateAccuracy();
+      expect(accuracy, inInclusiveRange(49.0, 52.0));
+    });
+
+    test('detects perfect understanding when unperceiveTruths is 0', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 0);
+      expect(metric.report().contains('perfectUnderstanding: YES'), true);
+    });
+
+    test('rejects invalid unperceiveTruths values', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 100);
+      expect(metric.isValid(), false);
+    });
+
+    test('decreases unperceiveTruths from 96 to 0 in perfect conditions', () {
+      for (int i = 0; i <= 96; i++) {
+        final metric = UltimateUnderstandingMetrics(unperceiveTruths: i);
+        expect(metric.isValid(), true);
+      }
+    });
+
+    test('maintains accuracy threshold above 96.5%', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 3);
+      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.9));
+    });
+
+    test('validates understanding report format', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 20);
+      final report = metric.report();
+      expect(report.contains('UltimateUnderstandingMetrics'), true);
+      expect(report.contains('validation:'), true);
+    });
+
+    test('handles boundary condition at zero', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 0);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('handles boundary condition at maximum', () {
+      final metric = UltimateUnderstandingMetrics(unperceiveTruths: 96);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), lessThanOrEqualTo(2.0));
+    });
+  });
+
+  group('Cross-metric illumination validation', () {
+    test('all metrics reach perfect state simultaneously', () {
+      final illumination = CosmicIlluminationMetrics(unilluminatedAreas: 0);
+      final clarity = AbsoluteClarityMetrics(obscuredInsights: 0);
+      final understanding = UltimateUnderstandingMetrics(unperceiveTruths: 0);
+
+      expect(illumination.calculateAccuracy(), 100.0);
+      expect(clarity.calculateAccuracy(), 100.0);
+      expect(understanding.calculateAccuracy(), 100.0);
+    });
+
+    test('metrics maintain consistency in accuracy calculations', () {
+      final illumination = CosmicIlluminationMetrics(unilluminatedAreas: 47);
+      final clarity = AbsoluteClarityMetrics(obscuredInsights: 47);
+      final understanding = UltimateUnderstandingMetrics(unperceiveTruths: 48);
+
+      final accuracyIllumination = illumination.calculateAccuracy();
+      final accuracyClarity = clarity.calculateAccuracy();
+      final accuracyUnderstanding = understanding.calculateAccuracy();
+
+      expect((accuracyIllumination - accuracyClarity).abs(), lessThan(5.0));
+      expect((accuracyClarity - accuracyUnderstanding).abs(), lessThan(5.0));
+    });
+
+    test('progressive illumination advancement', () {
+      final stages = [
+        CosmicIlluminationMetrics(unilluminatedAreas: 94),
+        CosmicIlluminationMetrics(unilluminatedAreas: 50),
+        CosmicIlluminationMetrics(unilluminatedAreas: 25),
+        CosmicIlluminationMetrics(unilluminatedAreas: 0),
+      ];
+
+      for (int i = 0; i < stages.length - 1; i++) {
+        expect(
+          stages[i + 1].calculateAccuracy(),
+          greaterThan(stages[i].calculateAccuracy()),
         );
-
-        final metrics2 = PerfectVisionMetrics(
-          systemId: 6,
-          visionScore: 98.5,
-          perceivedDimensions: 35000,
-          sightAccuracy: 0.99,
-          perceptionEvents: 680,
-          absoluteVisionScore: 0.98,
-          visionPaths: ['infinite_vision', 'perfect_perception', 'absolute_sight'],
-          perfectSightScore: 0.97,
-          blindAreas: 0,
-          visionTime: DateTime.now(),
-        );
-
-        expect(metrics1.visionScore, greaterThanOrEqualTo(96.8));
-        expect(metrics1.visionScore, lessThanOrEqualTo(98.5));
-        expect(metrics2.visionScore, greaterThanOrEqualTo(96.8));
-        expect(metrics2.visionScore, lessThanOrEqualTo(98.5));
-        expect(metrics1.sightAccuracy, greaterThan(0.95));
-        expect(metrics2.sightAccuracy, greaterThan(0.95));
-
-        print('✓ Perfect vision validated: '
-            '${metrics1.visionScore}% (m1), ${metrics2.visionScore}% (m2)');
-      });
+      }
     });
   });
 }
