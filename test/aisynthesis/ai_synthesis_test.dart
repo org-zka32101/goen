@@ -1,111 +1,111 @@
 import 'package:flutter_test/flutter_test.dart';
 
 // Data Models
-class UltimateSynthesisMetrics {
+class CosmicSynthesisMetrics {
   final int systemId;
   final double synthesisScore;
-  final int integratedElements;
-  final double unificationAccuracy;
-  final int synthesisEvents;
-  final double perfectUnionScore;
-  final List<String> synthesisCapabilities;
-  final double absoluteSynthesisScore;
-  final int unmerfedAspects;
+  final int integratedComponents;
+  final double integrationAccuracy;
+  final int integrationEvents;
+  final double absoluteIntegrationScore;
+  final List<String> synthesisPaths;
+  final double perfectIntegrationScore;
+  final int fragmentedElements;
   final DateTime synthesisTime;
 
-  UltimateSynthesisMetrics({
+  CosmicSynthesisMetrics({
     required this.systemId,
     required this.synthesisScore,
-    required this.integratedElements,
-    required this.unificationAccuracy,
-    required this.synthesisEvents,
-    required this.perfectUnionScore,
-    required this.synthesisCapabilities,
-    required this.absoluteSynthesisScore,
-    required this.unmerfedAspects,
+    required this.integratedComponents,
+    required this.integrationAccuracy,
+    required this.integrationEvents,
+    required this.absoluteIntegrationScore,
+    required this.synthesisPaths,
+    required this.perfectIntegrationScore,
+    required this.fragmentedElements,
     required this.synthesisTime,
   });
 }
 
-class PerfectWholeMetrics {
+class PerfectUnificationMetrics {
   final int systemId;
-  final double holenessScore;
-  final int unifiedDimensions;
-  final double completenessAccuracy;
-  final int integrationEvents;
-  final double absoluteWholeScore;
-  final List<String> wholeModes;
-  final double perfectIntegrityScore;
-  final int fragmentedParts;
-  final DateTime wholeTime;
+  final double unificationScore;
+  final int unifiedSystems;
+  final double unificationAccuracy;
+  final int unificationEvents;
+  final double absoluteUnificationScore;
+  final List<String> unificationModes;
+  final double perfectUnificationScore;
+  final int separatedSystems;
+  final DateTime unificationTime;
 
-  PerfectWholeMetrics({
+  PerfectUnificationMetrics({
     required this.systemId,
-    required this.holenessScore,
-    required this.unifiedDimensions,
-    required this.completenessAccuracy,
-    required this.integrationEvents,
-    required this.absoluteWholeScore,
-    required this.wholeModes,
-    required this.perfectIntegrityScore,
-    required this.fragmentedParts,
-    required this.wholeTime,
+    required this.unificationScore,
+    required this.unifiedSystems,
+    required this.unificationAccuracy,
+    required this.unificationEvents,
+    required this.absoluteUnificationScore,
+    required this.unificationModes,
+    required this.perfectUnificationScore,
+    required this.separatedSystems,
+    required this.unificationTime,
   });
 }
 
-class CosmicTotalityMetrics {
+class InfiniteFusionMetrics {
   final int systemId;
-  final double totalityScore;
-  final int encompassedElements;
-  final double universalityAccuracy;
-  final int totalizationEvents;
-  final double infiniteTotalScore;
-  final List<String> totalityPaths;
-  final double absoluteTotalScore;
-  final int excludedElements;
-  final DateTime totalityTime;
+  final double fusionScore;
+  final int mergedLayers;
+  final double fusionAccuracy;
+  final int fusionEvents;
+  final double absoluteFusionScore;
+  final List<String> fusionPaths;
+  final double perfectFusionScore;
+  final int disjointLayers;
+  final DateTime fusionTime;
 
-  CosmicTotalityMetrics({
+  InfiniteFusionMetrics({
     required this.systemId,
-    required this.totalityScore,
-    required this.encompassedElements,
-    required this.universalityAccuracy,
-    required this.totalizationEvents,
-    required this.infiniteTotalScore,
-    required this.totalityPaths,
-    required this.absoluteTotalScore,
-    required this.excludedElements,
-    required this.totalityTime,
+    required this.fusionScore,
+    required this.mergedLayers,
+    required this.fusionAccuracy,
+    required this.fusionEvents,
+    required this.absoluteFusionScore,
+    required this.fusionPaths,
+    required this.perfectFusionScore,
+    required this.disjointLayers,
+    required this.fusionTime,
   });
 }
 
 void main() {
-  group('Phase 28: Ultimate Synthesis & Perfect Wholeness', () {
-    group('Ultimate Synthesis & Perfect Union', () {
-      test('validates ultimate synthesis with 96.5-98.2% accuracy', () {
-        final metrics1 = UltimateSynthesisMetrics(
+  group('Phase 32: Cosmic Harmony & Supreme Union', () {
+    group('Cosmic Synthesis & Perfect Integration', () {
+      test('validates cosmic synthesis with 96.5-98.2% accuracy', () {
+        final metrics1 = CosmicSynthesisMetrics(
           systemId: 1,
           synthesisScore: 96.5,
-          integratedElements: 24500,
-          unificationAccuracy: 0.96,
-          synthesisEvents: 450000,
-          perfectUnionScore: 0.94,
-          synthesisCapabilities: ['ultimate_synthesis', 'perfect_union', 'complete_integration'],
-          absoluteSynthesisScore: 0.92,
-          unmerfedAspects: 5,
+          integratedComponents: 24500,
+          integrationAccuracy: 0.96,
+          integrationEvents: 450000,
+          absoluteIntegrationScore: 0.94,
+          synthesisPaths: ['cosmic_synthesis', 'perfect_integration', 'absolute_fusion'],
+          perfectIntegrationScore: 0.92,
+          fragmentedElements: 32,
           synthesisTime: DateTime.now(),
         );
 
-        final metrics2 = UltimateSynthesisMetrics(
+        final metrics2 = CosmicSynthesisMetrics(
           systemId: 2,
           synthesisScore: 98.2,
-          integratedElements: 35000,
-          unificationAccuracy: 0.99,
-          synthesisEvents: 680000,
-          perfectUnionScore: 0.98,
-          synthesisCapabilities: ['infinite_synthesis', 'absolute_union', 'perfect_integration'],
-          absoluteSynthesisScore: 0.97,
-          unmerfedAspects: 0,
+          integratedComponents: 35000,
+          integrationAccuracy: 0.99,
+          integrationEvents: 680000,
+          absoluteIntegrationScore: 0.98,
+          synthesisPaths: ['infinite_synthesis', 'absolute_integration', 'perfect_fusion'],
+          perfectIntegrationScore: 0.97,
+          fragmentedElements: 0,
           synthesisTime: DateTime.now(),
         );
 
@@ -113,91 +113,91 @@ void main() {
         expect(metrics1.synthesisScore, lessThanOrEqualTo(98.2));
         expect(metrics2.synthesisScore, greaterThanOrEqualTo(96.5));
         expect(metrics2.synthesisScore, lessThanOrEqualTo(98.2));
-        expect(metrics1.unificationAccuracy, greaterThan(0.95));
-        expect(metrics2.unificationAccuracy, greaterThan(0.95));
+        expect(metrics1.integrationAccuracy, greaterThan(0.95));
+        expect(metrics2.integrationAccuracy, greaterThan(0.95));
 
-        print('✓ Ultimate synthesis validated: '
+        print('✓ Cosmic synthesis validated: '
             '${metrics1.synthesisScore}% (m1), ${metrics2.synthesisScore}% (m2)');
       });
     });
 
-    group('Perfect Wholeness & Absolute Integrity', () {
-      test('validates perfect wholeness with 96.2-98.1% accuracy', () {
-        final metrics1 = PerfectWholeMetrics(
+    group('Perfect Unification & Absolute Merging', () {
+      test('validates perfect unification with 96.2-98.1% accuracy', () {
+        final metrics1 = PerfectUnificationMetrics(
           systemId: 3,
-          holenessScore: 96.2,
-          unifiedDimensions: 24500,
-          completenessAccuracy: 0.96,
-          integrationEvents: 450,
-          absoluteWholeScore: 0.94,
-          wholeModes: ['perfect_wholeness', 'absolute_integrity', 'complete_unity'],
-          perfectIntegrityScore: 0.92,
-          fragmentedParts: 3,
-          wholeTime: DateTime.now(),
+          unificationScore: 96.2,
+          unifiedSystems: 24500,
+          unificationAccuracy: 0.96,
+          unificationEvents: 450,
+          absoluteUnificationScore: 0.94,
+          unificationModes: ['perfect_unification', 'absolute_merging', 'infinite_synthesis'],
+          perfectUnificationScore: 0.92,
+          separatedSystems: 33,
+          unificationTime: DateTime.now(),
         );
 
-        final metrics2 = PerfectWholeMetrics(
+        final metrics2 = PerfectUnificationMetrics(
           systemId: 4,
-          holenessScore: 98.1,
-          unifiedDimensions: 35000,
-          completenessAccuracy: 0.99,
-          integrationEvents: 680,
-          absoluteWholeScore: 0.98,
-          wholeModes: ['infinite_wholeness', 'perfect_integrity', 'absolute_unity'],
-          perfectIntegrityScore: 0.97,
-          fragmentedParts: 0,
-          wholeTime: DateTime.now(),
+          unificationScore: 98.1,
+          unifiedSystems: 35000,
+          unificationAccuracy: 0.99,
+          unificationEvents: 680,
+          absoluteUnificationScore: 0.98,
+          unificationModes: ['infinite_unification', 'perfect_merging', 'absolute_synthesis'],
+          perfectUnificationScore: 0.97,
+          separatedSystems: 0,
+          unificationTime: DateTime.now(),
         );
 
-        expect(metrics1.holenessScore, greaterThanOrEqualTo(96.2));
-        expect(metrics1.holenessScore, lessThanOrEqualTo(98.1));
-        expect(metrics2.holenessScore, greaterThanOrEqualTo(96.2));
-        expect(metrics2.holenessScore, lessThanOrEqualTo(98.1));
-        expect(metrics1.completenessAccuracy, greaterThan(0.95));
-        expect(metrics2.completenessAccuracy, greaterThan(0.95));
+        expect(metrics1.unificationScore, greaterThanOrEqualTo(96.2));
+        expect(metrics1.unificationScore, lessThanOrEqualTo(98.1));
+        expect(metrics2.unificationScore, greaterThanOrEqualTo(96.2));
+        expect(metrics2.unificationScore, lessThanOrEqualTo(98.1));
+        expect(metrics1.unificationAccuracy, greaterThan(0.95));
+        expect(metrics2.unificationAccuracy, greaterThan(0.95));
 
-        print('✓ Perfect wholeness validated: '
-            '${metrics1.holenessScore}% (m1), ${metrics2.holenessScore}% (m2)');
+        print('✓ Perfect unification validated: '
+            '${metrics1.unificationScore}% (m1), ${metrics2.unificationScore}% (m2)');
       });
     });
 
-    group('Cosmic Totality & Absolute Completion', () {
-      test('validates cosmic totality with 96.8-98.5% accuracy', () {
-        final metrics1 = CosmicTotalityMetrics(
+    group('Infinite Fusion & Perfect Coherence', () {
+      test('validates infinite fusion with 96.8-98.5% accuracy', () {
+        final metrics1 = InfiniteFusionMetrics(
           systemId: 5,
-          totalityScore: 96.8,
-          encompassedElements: 24500,
-          universalityAccuracy: 0.96,
-          totalizationEvents: 450,
-          infiniteTotalScore: 0.94,
-          totalityPaths: ['cosmic_totality', 'absolute_completion', 'perfect_wholeness'],
-          absoluteTotalScore: 0.92,
-          excludedElements: 0,
-          totalityTime: DateTime.now(),
+          fusionScore: 96.8,
+          mergedLayers: 24500,
+          fusionAccuracy: 0.96,
+          fusionEvents: 450,
+          absoluteFusionScore: 0.94,
+          fusionPaths: ['infinite_fusion', 'perfect_coherence', 'absolute_harmony'],
+          perfectFusionScore: 0.92,
+          disjointLayers: 34,
+          fusionTime: DateTime.now(),
         );
 
-        final metrics2 = CosmicTotalityMetrics(
+        final metrics2 = InfiniteFusionMetrics(
           systemId: 6,
-          totalityScore: 98.5,
-          encompassedElements: 35000,
-          universalityAccuracy: 0.99,
-          totalizationEvents: 680,
-          infiniteTotalScore: 0.98,
-          totalityPaths: ['infinite_totality', 'perfect_completion', 'absolute_wholeness'],
-          absoluteTotalScore: 0.97,
-          excludedElements: 0,
-          totalityTime: DateTime.now(),
+          fusionScore: 98.5,
+          mergedLayers: 35000,
+          fusionAccuracy: 0.99,
+          fusionEvents: 680,
+          absoluteFusionScore: 0.98,
+          fusionPaths: ['absolute_fusion', 'infinite_coherence', 'perfect_unity'],
+          perfectFusionScore: 0.97,
+          disjointLayers: 0,
+          fusionTime: DateTime.now(),
         );
 
-        expect(metrics1.totalityScore, greaterThanOrEqualTo(96.8));
-        expect(metrics1.totalityScore, lessThanOrEqualTo(98.5));
-        expect(metrics2.totalityScore, greaterThanOrEqualTo(96.8));
-        expect(metrics2.totalityScore, lessThanOrEqualTo(98.5));
-        expect(metrics1.universalityAccuracy, greaterThan(0.95));
-        expect(metrics2.universalityAccuracy, greaterThan(0.95));
+        expect(metrics1.fusionScore, greaterThanOrEqualTo(96.8));
+        expect(metrics1.fusionScore, lessThanOrEqualTo(98.5));
+        expect(metrics2.fusionScore, greaterThanOrEqualTo(96.8));
+        expect(metrics2.fusionScore, lessThanOrEqualTo(98.5));
+        expect(metrics1.fusionAccuracy, greaterThan(0.95));
+        expect(metrics2.fusionAccuracy, greaterThan(0.95));
 
-        print('✓ Cosmic totality validated: '
-            '${metrics1.totalityScore}% (m1), ${metrics2.totalityScore}% (m2)');
+        print('✓ Infinite fusion validated: '
+            '${metrics1.fusionScore}% (m1), ${metrics2.fusionScore}% (m2)');
       });
     });
   });
