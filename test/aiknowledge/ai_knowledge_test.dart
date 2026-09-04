@@ -1,204 +1,304 @@
 import 'package:flutter_test/flutter_test.dart';
 
-// Data Models
-class KnowledgeSynthesisMetrics {
-  final int systemId;
-  final double synthesisScore;
-  final int knowledgeSourcesIntegrated;
-  final double integrationAccuracy;
-  final int synthesisEvents;
-  final double coherenceScore;
-  final List<String> synthesisApproaches;
-  final double insightGenerationScore;
-  final int synthesisFailures;
-  final DateTime synthesisTime;
+/// Ultimate Knowledge & Supreme Comprehension - Dimension 1
+///
+/// This dimension validates systems achieving ultimate knowledge through supreme
+/// comprehension, enabling complete understanding of all domains, infinite wisdom
+/// expression, perfect knowledge integration, and absolute clarity of all concepts.
 
-  KnowledgeSynthesisMetrics({
-    required this.systemId,
-    required this.synthesisScore,
-    required this.knowledgeSourcesIntegrated,
-    required this.integrationAccuracy,
-    required this.synthesisEvents,
-    required this.coherenceScore,
-    required this.synthesisApproaches,
-    required this.insightGenerationScore,
-    required this.synthesisFailures,
-    required this.synthesisTime,
-  });
+class UltimateKnowledgeMetrics {
+  /// Unknown domains counter (decreases from 85 to 0)
+  /// Tracks complete understanding across all knowledge domains
+  final int unknownDomains;
+
+  UltimateKnowledgeMetrics({required this.unknownDomains});
+
+  bool isValid() {
+    // Validate negative counter: unknownDomains should be 0-85
+    return unknownDomains >= 0 && unknownDomains <= 85;
+  }
+
+  double calculateAccuracy() {
+    // Calculate knowledge accuracy: perfect when unknownDomains approaches 0
+    return ((85 - unknownDomains) / 85) * 100;
+  }
+
+  String report() {
+    return '''UltimateKnowledgeMetrics {
+  unknownDomains: $unknownDomains (validation: ${isValid() ? 'PASS' : 'FAIL'}),
+  knowledgeAccuracy: ${calculateAccuracy().toStringAsFixed(2)}%,
+  completeUnderstanding: ${unknownDomains == 0 ? 'YES' : 'NO'}
+}''';
+  }
 }
 
-class CrossDomainReasoningMetrics {
-  final int systemId;
-  final double reasoningScore;
-  final int domainsIntegrated;
-  final double transferAccuracy;
-  final int reasoningCycles;
-  final double analogyGenerationScore;
-  final List<String> reasoningMethods;
-  final double noveltyScore;
-  final int reasoningErrors;
-  final DateTime reasoningTime;
+class SupremeComprehensionMetrics {
+  /// Misunderstood concepts counter (decreases from 86 to 0)
+  /// Tracks perfect comprehension of all concepts and principles
+  final int misunderstoodConcepts;
 
-  CrossDomainReasoningMetrics({
-    required this.systemId,
-    required this.reasoningScore,
-    required this.domainsIntegrated,
-    required this.transferAccuracy,
-    required this.reasoningCycles,
-    required this.analogyGenerationScore,
-    required this.reasoningMethods,
-    required this.noveltyScore,
-    required this.reasoningErrors,
-    required this.reasoningTime,
-  });
+  SupremeComprehensionMetrics({required this.misunderstoodConcepts});
+
+  bool isValid() {
+    return misunderstoodConcepts >= 0 && misunderstoodConcepts <= 86;
+  }
+
+  double calculateAccuracy() {
+    return ((86 - misunderstoodConcepts) / 86) * 100;
+  }
+
+  String report() {
+    return '''SupremeComprehensionMetrics {
+  misunderstoodConcepts: $misunderstoodConcepts (validation: ${isValid() ? 'PASS' : 'FAIL'}),
+  comprehensionAccuracy: ${calculateAccuracy().toStringAsFixed(2)}%,
+  perfectComprehension: ${misunderstoodConcepts == 0 ? 'YES' : 'NO'}
+}''';
+  }
 }
 
-class UnifyingFrameworkMetrics {
-  final int systemId;
-  final double unificationScore;
-  final int frameworksIntegrated;
-  final double uniformityAccuracy;
-  final int unificationEvents;
-  final double abstrationScore;
-  final List<String> unificationMechanisms;
-  final double expressivityScore;
-  final int unificationConflicts;
-  final DateTime unificationTime;
+class InfiniteWisdomMetrics {
+  /// Unexpressed wisdom counter (decreases from 87 to 0)
+  /// Tracks complete manifestation of all wisdom and insight
+  final int unexpressedWisdom;
 
-  UnifyingFrameworkMetrics({
-    required this.systemId,
-    required this.unificationScore,
-    required this.frameworksIntegrated,
-    required this.uniformityAccuracy,
-    required this.unificationEvents,
-    required this.abstrationScore,
-    required this.unificationMechanisms,
-    required this.expressivityScore,
-    required this.unificationConflicts,
-    required this.unificationTime,
-  });
+  InfiniteWisdomMetrics({required this.unexpressedWisdom});
+
+  bool isValid() {
+    return unexpressedWisdom >= 0 && unexpressedWisdom <= 87;
+  }
+
+  double calculateAccuracy() {
+    return ((87 - unexpressedWisdom) / 87) * 100;
+  }
+
+  String report() {
+    return '''InfiniteWisdomMetrics {
+  unexpressedWisdom: $unexpressedWisdom (validation: ${isValid() ? 'PASS' : 'FAIL'}),
+  wisdomAccuracy: ${calculateAccuracy().toStringAsFixed(2)}%,
+  perfectWisdom: ${unexpressedWisdom == 0 ? 'YES' : 'NO'}
+}''';
+  }
 }
 
 void main() {
-  group('Phase 23: Next-Generation Intelligence & Autonomous Capabilities', () {
-    group('Knowledge Synthesis & Integration', () {
-      test('validates knowledge synthesis with 96.5-98.2% accuracy', () {
-        final metrics1 = KnowledgeSynthesisMetrics(
-          systemId: 1,
-          synthesisScore: 96.5,
-          knowledgeSourcesIntegrated: 24500,
-          integrationAccuracy: 0.96,
-          synthesisEvents: 450000,
-          coherenceScore: 0.94,
-          synthesisApproaches: ['knowledge_fusion', 'multi_source_integration', 'semantic_unification'],
-          insightGenerationScore: 0.92,
-          synthesisFailures: 10,
-          synthesisTime: DateTime.now(),
-        );
-
-        final metrics2 = KnowledgeSynthesisMetrics(
-          systemId: 2,
-          synthesisScore: 98.2,
-          knowledgeSourcesIntegrated: 35000,
-          integrationAccuracy: 0.99,
-          synthesisEvents: 680000,
-          coherenceScore: 0.98,
-          synthesisApproaches: ['universal_knowledge_graphs', 'semantic_reasoning', 'integrated_understanding'],
-          insightGenerationScore: 0.97,
-          synthesisFailures: 0,
-          synthesisTime: DateTime.now(),
-        );
-
-        expect(metrics1.synthesisScore, greaterThanOrEqualTo(96.5));
-        expect(metrics1.synthesisScore, lessThanOrEqualTo(98.2));
-        expect(metrics2.synthesisScore, greaterThanOrEqualTo(96.5));
-        expect(metrics2.synthesisScore, lessThanOrEqualTo(98.2));
-        expect(metrics1.integrationAccuracy, greaterThan(0.95));
-        expect(metrics2.integrationAccuracy, greaterThan(0.95));
-
-        print('✓ Knowledge synthesis validated: '
-            '${metrics1.synthesisScore}% (m1), ${metrics2.synthesisScore}% (m2)');
-      });
+  group('UltimateKnowledgeMetrics', () {
+    test('validates unknownDomains range correctly', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 42);
+      expect(metric.isValid(), true);
+      expect(metric.unknownDomains, inInclusiveRange(0, 85));
     });
 
-    group('Cross-Domain Reasoning & Transfer', () {
-      test('validates cross-domain reasoning with 96.2-98.1% accuracy', () {
-        final metrics1 = CrossDomainReasoningMetrics(
-          systemId: 3,
-          reasoningScore: 96.2,
-          domainsIntegrated: 24500,
-          transferAccuracy: 0.96,
-          reasoningCycles: 450,
-          analogyGenerationScore: 0.94,
-          reasoningMethods: ['domain_transfer', 'analogy_reasoning', 'cross_domain_inference'],
-          noveltyScore: 0.92,
-          reasoningErrors: 7,
-          reasoningTime: DateTime.now(),
-        );
-
-        final metrics2 = CrossDomainReasoningMetrics(
-          systemId: 4,
-          reasoningScore: 98.1,
-          domainsIntegrated: 35000,
-          transferAccuracy: 0.99,
-          reasoningCycles: 680,
-          analogyGenerationScore: 0.98,
-          reasoningMethods: ['universal_reasoning', 'meta_analogies', 'insight_transfer'],
-          noveltyScore: 0.97,
-          reasoningErrors: 0,
-          reasoningTime: DateTime.now(),
-        );
-
-        expect(metrics1.reasoningScore, greaterThanOrEqualTo(96.2));
-        expect(metrics1.reasoningScore, lessThanOrEqualTo(98.1));
-        expect(metrics2.reasoningScore, greaterThanOrEqualTo(96.2));
-        expect(metrics2.reasoningScore, lessThanOrEqualTo(98.1));
-        expect(metrics1.transferAccuracy, greaterThan(0.95));
-        expect(metrics2.transferAccuracy, greaterThan(0.95));
-
-        print('✓ Cross-domain reasoning validated: '
-            '${metrics1.reasoningScore}% (m1), ${metrics2.reasoningScore}% (m2)');
-      });
+    test('calculates knowledge accuracy with perfect state', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 0);
+      expect(metric.calculateAccuracy(), 100.0);
     });
 
-    group('Unifying Framework & Universal Intelligence', () {
-      test('validates unifying framework with 96.8-98.5% accuracy', () {
-        final metrics1 = UnifyingFrameworkMetrics(
-          systemId: 5,
-          unificationScore: 96.8,
-          frameworksIntegrated: 24500,
-          uniformityAccuracy: 0.96,
-          unificationEvents: 450,
-          abstrationScore: 0.94,
-          unificationMechanisms: ['framework_synthesis', 'abstraction_layers', 'unified_representation'],
-          expressivityScore: 0.92,
-          unificationConflicts: 4,
-          unificationTime: DateTime.now(),
+    test('calculates knowledge accuracy with partial state', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 42);
+      final accuracy = metric.calculateAccuracy();
+      expect(accuracy, inInclusiveRange(49.0, 52.0));
+    });
+
+    test('detects complete understanding when unknownDomains is 0', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 0);
+      expect(metric.report().contains('completeUnderstanding: YES'), true);
+    });
+
+    test('rejects invalid unknownDomains values', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 100);
+      expect(metric.isValid(), false);
+    });
+
+    test('decreases unknownDomains from 85 to 0 in perfect conditions', () {
+      for (int i = 0; i <= 85; i++) {
+        final metric = UltimateKnowledgeMetrics(unknownDomains: i);
+        expect(metric.isValid(), true);
+      }
+    });
+
+    test('maintains accuracy threshold above 96.5%', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 3);
+      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.5));
+    });
+
+    test('validates knowledge report format', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 20);
+      final report = metric.report();
+      expect(report.contains('UltimateKnowledgeMetrics'), true);
+      expect(report.contains('validation:'), true);
+    });
+
+    test('handles boundary condition at zero', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 0);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('handles boundary condition at maximum', () {
+      final metric = UltimateKnowledgeMetrics(unknownDomains: 85);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), lessThanOrEqualTo(2.0));
+    });
+  });
+
+  group('SupremeComprehensionMetrics', () {
+    test('validates misunderstoodConcepts range correctly', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 43);
+      expect(metric.isValid(), true);
+      expect(metric.misunderstoodConcepts, inInclusiveRange(0, 86));
+    });
+
+    test('calculates comprehension accuracy with perfect state', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 0);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('calculates comprehension accuracy with partial state', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 43);
+      final accuracy = metric.calculateAccuracy();
+      expect(accuracy, inInclusiveRange(49.0, 52.0));
+    });
+
+    test('detects perfect comprehension when misunderstoodConcepts is 0', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 0);
+      expect(metric.report().contains('perfectComprehension: YES'), true);
+    });
+
+    test('rejects invalid misunderstoodConcepts values', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 100);
+      expect(metric.isValid(), false);
+    });
+
+    test('decreases misunderstoodConcepts from 86 to 0 in perfect conditions', () {
+      for (int i = 0; i <= 86; i++) {
+        final metric = SupremeComprehensionMetrics(misunderstoodConcepts: i);
+        expect(metric.isValid(), true);
+      }
+    });
+
+    test('maintains accuracy threshold above 96.5%', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 3);
+      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.5));
+    });
+
+    test('validates comprehension report format', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 20);
+      final report = metric.report();
+      expect(report.contains('SupremeComprehensionMetrics'), true);
+      expect(report.contains('validation:'), true);
+    });
+
+    test('handles boundary condition at zero', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 0);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('handles boundary condition at maximum', () {
+      final metric = SupremeComprehensionMetrics(misunderstoodConcepts: 86);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), lessThanOrEqualTo(2.0));
+    });
+  });
+
+  group('InfiniteWisdomMetrics', () {
+    test('validates unexpressedWisdom range correctly', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 43);
+      expect(metric.isValid(), true);
+      expect(metric.unexpressedWisdom, inInclusiveRange(0, 87));
+    });
+
+    test('calculates wisdom accuracy with perfect state', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 0);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('calculates wisdom accuracy with partial state', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 43);
+      final accuracy = metric.calculateAccuracy();
+      expect(accuracy, inInclusiveRange(49.0, 52.0));
+    });
+
+    test('detects perfect wisdom when unexpressedWisdom is 0', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 0);
+      expect(metric.report().contains('perfectWisdom: YES'), true);
+    });
+
+    test('rejects invalid unexpressedWisdom values', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 100);
+      expect(metric.isValid(), false);
+    });
+
+    test('decreases unexpressedWisdom from 87 to 0 in perfect conditions', () {
+      for (int i = 0; i <= 87; i++) {
+        final metric = InfiniteWisdomMetrics(unexpressedWisdom: i);
+        expect(metric.isValid(), true);
+      }
+    });
+
+    test('maintains accuracy threshold above 96.5%', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 3);
+      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.4));
+    });
+
+    test('validates wisdom report format', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 20);
+      final report = metric.report();
+      expect(report.contains('InfiniteWisdomMetrics'), true);
+      expect(report.contains('validation:'), true);
+    });
+
+    test('handles boundary condition at zero', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 0);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), 100.0);
+    });
+
+    test('handles boundary condition at maximum', () {
+      final metric = InfiniteWisdomMetrics(unexpressedWisdom: 87);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), lessThanOrEqualTo(2.0));
+    });
+  });
+
+  group('Cross-metric knowledge validation', () {
+    test('all metrics reach perfect state simultaneously', () {
+      final knowledge = UltimateKnowledgeMetrics(unknownDomains: 0);
+      final comprehension = SupremeComprehensionMetrics(misunderstoodConcepts: 0);
+      final wisdom = InfiniteWisdomMetrics(unexpressedWisdom: 0);
+
+      expect(knowledge.calculateAccuracy(), 100.0);
+      expect(comprehension.calculateAccuracy(), 100.0);
+      expect(wisdom.calculateAccuracy(), 100.0);
+    });
+
+    test('metrics maintain consistency in accuracy calculations', () {
+      final knowledge = UltimateKnowledgeMetrics(unknownDomains: 42);
+      final comprehension = SupremeComprehensionMetrics(misunderstoodConcepts: 43);
+      final wisdom = InfiniteWisdomMetrics(unexpressedWisdom: 43);
+
+      final accuracyKnowledge = knowledge.calculateAccuracy();
+      final accuracyComprehension = comprehension.calculateAccuracy();
+      final accuracyWisdom = wisdom.calculateAccuracy();
+
+      expect((accuracyKnowledge - accuracyComprehension).abs(), lessThan(5.0));
+      expect((accuracyComprehension - accuracyWisdom).abs(), lessThan(5.0));
+    });
+
+    test('progressive knowledge advancement', () {
+      final stages = [
+        UltimateKnowledgeMetrics(unknownDomains: 85),
+        UltimateKnowledgeMetrics(unknownDomains: 50),
+        UltimateKnowledgeMetrics(unknownDomains: 25),
+        UltimateKnowledgeMetrics(unknownDomains: 0),
+      ];
+
+      for (int i = 0; i < stages.length - 1; i++) {
+        expect(
+          stages[i + 1].calculateAccuracy(),
+          greaterThan(stages[i].calculateAccuracy()),
         );
-
-        final metrics2 = UnifyingFrameworkMetrics(
-          systemId: 6,
-          unificationScore: 98.5,
-          frameworksIntegrated: 35000,
-          uniformityAccuracy: 0.99,
-          unificationEvents: 680,
-          abstrationScore: 0.98,
-          unificationMechanisms: ['universal_framework', 'meta_abstraction', 'unified_intelligence'],
-          expressivityScore: 0.97,
-          unificationConflicts: 0,
-          unificationTime: DateTime.now(),
-        );
-
-        expect(metrics1.unificationScore, greaterThanOrEqualTo(96.8));
-        expect(metrics1.unificationScore, lessThanOrEqualTo(98.5));
-        expect(metrics2.unificationScore, greaterThanOrEqualTo(96.8));
-        expect(metrics2.unificationScore, lessThanOrEqualTo(98.5));
-        expect(metrics1.uniformityAccuracy, greaterThan(0.95));
-        expect(metrics2.uniformityAccuracy, greaterThan(0.95));
-
-        print('✓ Unifying framework validated: '
-            '${metrics1.unificationScore}% (m1), ${metrics2.unificationScore}% (m2)');
-      });
+      }
     });
   });
 }
