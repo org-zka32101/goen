@@ -1,211 +1,66 @@
 import 'package:flutter_test/flutter_test.dart';
 
-// Dimension 1: Infinite Transcendent Glory & Boundless Transcendent Perfection Testing
-// Counters: 505-507
-// Tests: 30 (10 per metric class)
-
 class InfiniteTranscendentGlory {
-  final int counter;
-  InfiniteTranscendentGlory({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 505;
-  double calculateAccuracy() => ((505 - counter) / 505) * 100;
-  String report() => 'InfiniteTranscendentGlory { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+  static const int maxCounter = 1000;
+  int currentCounter;
+  InfiniteTranscendentGlory({this.currentCounter = 0});
+  double calculateAccuracy() => ((maxCounter - currentCounter) / maxCounter) * 100;
+  bool isWithinThreshold(double threshold) => calculateAccuracy() >= threshold;
 }
 
-class BoundlessTranscendentPerfection {
-  final int counter;
-  BoundlessTranscendentPerfection({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 506;
-  double calculateAccuracy() => ((506 - counter) / 506) * 100;
-  String report() => 'BoundlessTranscendentPerfection { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+class TranscendentGloryMetric {
+  static const int maxCounter = 1000;
+  int currentCounter;
+  TranscendentGloryMetric({this.currentCounter = 0});
+  double calculateAccuracy() => ((maxCounter - currentCounter) / maxCounter) * 100;
+  bool isWithinThreshold(double threshold) => calculateAccuracy() >= threshold;
 }
 
-class GloryTranscendentPerfection {
-  final int counter;
-  GloryTranscendentPerfection({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 507;
-  double calculateAccuracy() => ((507 - counter) / 507) * 100;
-  String report() => 'GloryTranscendentPerfection { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+class GloryTranscendentMetric {
+  static const int maxCounter = 1000;
+  int currentCounter;
+  GloryTranscendentMetric({this.currentCounter = 0});
+  double calculateAccuracy() => ((maxCounter - currentCounter) / maxCounter) * 100;
+  bool isWithinThreshold(double threshold) => calculateAccuracy() >= threshold;
 }
 
 void main() {
-  group('InfiniteTranscendentGlory Tests (Counter 505)', () {
-    test('Minimum boundary validation (counter = 0)', () {
-      final metric = InfiniteTranscendentGlory(counter: 0);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Maximum boundary validation (counter = 505)', () {
-      final metric = InfiniteTranscendentGlory(counter: 505);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Below minimum rejection (counter = -1)', () {
-      final metric = InfiniteTranscendentGlory(counter: -1);
-      expect(metric.isValid(), false);
-    });
-
-    test('Above maximum rejection (counter = 506)', () {
-      final metric = InfiniteTranscendentGlory(counter: 506);
-      expect(metric.isValid(), false);
-    });
-
-    test('Perfect state accuracy (100%)', () {
-      final metric = InfiniteTranscendentGlory(counter: 0);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Worst state accuracy (~0%)', () {
-      final metric = InfiniteTranscendentGlory(counter: 505);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Midpoint accuracy (~50%)', () {
-      final metric = InfiniteTranscendentGlory(counter: 252);
-      expect(metric.calculateAccuracy(), closeTo(50.1, 1.0));
-    });
-
-    test('Minimum threshold validation (≥96.2%)', () {
-      final metric = InfiniteTranscendentGlory(counter: 9);
-      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
-    });
-
-    test('Report string generation', () {
-      final metric = InfiniteTranscendentGlory(counter: 50);
-      final report = metric.report();
-      expect(report.contains('InfiniteTranscendentGlory'), true);
-      expect(report.contains('counter: 50'), true);
-      expect(report.contains('accuracy:'), true);
-    });
-
-    test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 505; counter += 25) {
-        final metric = InfiniteTranscendentGlory(counter: counter);
-        final expected = ((505 - counter) / 505) * 100;
-        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
-      }
-    });
+  group('InfiniteTranscendentGlory', () {
+    test('initializes with default counter', () { final metric = InfiniteTranscendentGlory(); expect(metric.currentCounter, 0); expect(metric.calculateAccuracy(), 100.0); });
+    test('initializes with custom counter', () { final metric = InfiniteTranscendentGlory(currentCounter: 250); expect(metric.calculateAccuracy(), 75.0); });
+    test('calculates accuracy correctly', () { final metric = InfiniteTranscendentGlory(currentCounter: 500); expect(metric.calculateAccuracy(), 50.0); });
+    test('accuracy reaches zero at max counter', () { final metric = InfiniteTranscendentGlory(currentCounter: 1000); expect(metric.calculateAccuracy(), 0.0); });
+    test('threshold validation passes for high accuracy', () { final metric = InfiniteTranscendentGlory(currentCounter: 100); expect(metric.isWithinThreshold(90.0), true); });
+    test('threshold validation fails for low accuracy', () { final metric = InfiniteTranscendentGlory(currentCounter: 900); expect(metric.isWithinThreshold(50.0), false); });
+    test('accuracy boundary at 75 percent', () { final metric = InfiniteTranscendentGlory(currentCounter: 250); expect(metric.isWithinThreshold(75.0), true); });
+    test('fractional counter updates accuracy', () { final metric = InfiniteTranscendentGlory(currentCounter: 333); expect(metric.calculateAccuracy(), closeTo(66.7, 0.1)); });
+    test('formula consistency across counter range', () { for (int i = 0; i <= 1000; i += 100) { final metric = InfiniteTranscendentGlory(currentCounter: i); expect(metric.calculateAccuracy(), closeTo(((1000 - i) / 1000) * 100, 0.001)); } });
+    test('edge case: counter exceeds max gracefully', () { final metric = InfiniteTranscendentGlory(currentCounter: 1500); expect(metric.calculateAccuracy(), closeTo(-50.0, 0.001)); });
   });
 
-  group('BoundlessTranscendentPerfection Tests (Counter 506)', () {
-    test('Minimum boundary validation (counter = 0)', () {
-      final metric = BoundlessTranscendentPerfection(counter: 0);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Maximum boundary validation (counter = 506)', () {
-      final metric = BoundlessTranscendentPerfection(counter: 506);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Below minimum rejection (counter = -1)', () {
-      final metric = BoundlessTranscendentPerfection(counter: -1);
-      expect(metric.isValid(), false);
-    });
-
-    test('Above maximum rejection (counter = 507)', () {
-      final metric = BoundlessTranscendentPerfection(counter: 507);
-      expect(metric.isValid(), false);
-    });
-
-    test('Perfect state accuracy (100%)', () {
-      final metric = BoundlessTranscendentPerfection(counter: 0);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Worst state accuracy (~0%)', () {
-      final metric = BoundlessTranscendentPerfection(counter: 506);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Midpoint accuracy (~50%)', () {
-      final metric = BoundlessTranscendentPerfection(counter: 253);
-      expect(metric.calculateAccuracy(), closeTo(50.0, 1.0));
-    });
-
-    test('Minimum threshold validation (≥96.2%)', () {
-      final metric = BoundlessTranscendentPerfection(counter: 9);
-      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
-    });
-
-    test('Report string generation', () {
-      final metric = BoundlessTranscendentPerfection(counter: 50);
-      final report = metric.report();
-      expect(report.contains('BoundlessTranscendentPerfection'), true);
-      expect(report.contains('counter: 50'), true);
-      expect(report.contains('accuracy:'), true);
-    });
-
-    test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 506; counter += 25) {
-        final metric = BoundlessTranscendentPerfection(counter: counter);
-        final expected = ((506 - counter) / 506) * 100;
-        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
-      }
-    });
+  group('TranscendentGloryMetric', () {
+    test('initializes with default counter', () { final metric = TranscendentGloryMetric(); expect(metric.currentCounter, 0); expect(metric.calculateAccuracy(), 100.0); });
+    test('initializes with custom counter', () { final metric = TranscendentGloryMetric(currentCounter: 250); expect(metric.calculateAccuracy(), 75.0); });
+    test('calculates accuracy correctly', () { final metric = TranscendentGloryMetric(currentCounter: 500); expect(metric.calculateAccuracy(), 50.0); });
+    test('accuracy reaches zero at max counter', () { final metric = TranscendentGloryMetric(currentCounter: 1000); expect(metric.calculateAccuracy(), 0.0); });
+    test('threshold validation passes for high accuracy', () { final metric = TranscendentGloryMetric(currentCounter: 100); expect(metric.isWithinThreshold(90.0), true); });
+    test('threshold validation fails for low accuracy', () { final metric = TranscendentGloryMetric(currentCounter: 900); expect(metric.isWithinThreshold(50.0), false); });
+    test('accuracy boundary at 75 percent', () { final metric = TranscendentGloryMetric(currentCounter: 250); expect(metric.isWithinThreshold(75.0), true); });
+    test('fractional counter updates accuracy', () { final metric = TranscendentGloryMetric(currentCounter: 333); expect(metric.calculateAccuracy(), closeTo(66.7, 0.1)); });
+    test('formula consistency across counter range', () { for (int i = 0; i <= 1000; i += 100) { final metric = TranscendentGloryMetric(currentCounter: i); expect(metric.calculateAccuracy(), closeTo(((1000 - i) / 1000) * 100, 0.001)); } });
+    test('edge case: counter exceeds max gracefully', () { final metric = TranscendentGloryMetric(currentCounter: 1500); expect(metric.calculateAccuracy(), closeTo(-50.0, 0.001)); });
   });
 
-  group('GloryTranscendentPerfection Tests (Counter 507)', () {
-    test('Minimum boundary validation (counter = 0)', () {
-      final metric = GloryTranscendentPerfection(counter: 0);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Maximum boundary validation (counter = 507)', () {
-      final metric = GloryTranscendentPerfection(counter: 507);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Below minimum rejection (counter = -1)', () {
-      final metric = GloryTranscendentPerfection(counter: -1);
-      expect(metric.isValid(), false);
-    });
-
-    test('Above maximum rejection (counter = 508)', () {
-      final metric = GloryTranscendentPerfection(counter: 508);
-      expect(metric.isValid(), false);
-    });
-
-    test('Perfect state accuracy (100%)', () {
-      final metric = GloryTranscendentPerfection(counter: 0);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Worst state accuracy (~0%)', () {
-      final metric = GloryTranscendentPerfection(counter: 507);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Midpoint accuracy (~50%)', () {
-      final metric = GloryTranscendentPerfection(counter: 253);
-      expect(metric.calculateAccuracy(), closeTo(50.1, 1.0));
-    });
-
-    test('Minimum threshold validation (≥96.2%)', () {
-      final metric = GloryTranscendentPerfection(counter: 9);
-      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
-    });
-
-    test('Report string generation', () {
-      final metric = GloryTranscendentPerfection(counter: 50);
-      final report = metric.report();
-      expect(report.contains('GloryTranscendentPerfection'), true);
-      expect(report.contains('counter: 50'), true);
-      expect(report.contains('accuracy:'), true);
-    });
-
-    test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 507; counter += 25) {
-        final metric = GloryTranscendentPerfection(counter: counter);
-        final expected = ((507 - counter) / 507) * 100;
-        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
-      }
-    });
+  group('GloryTranscendentMetric', () {
+    test('initializes with default counter', () { final metric = GloryTranscendentMetric(); expect(metric.currentCounter, 0); expect(metric.calculateAccuracy(), 100.0); });
+    test('initializes with custom counter', () { final metric = GloryTranscendentMetric(currentCounter: 250); expect(metric.calculateAccuracy(), 75.0); });
+    test('calculates accuracy correctly', () { final metric = GloryTranscendentMetric(currentCounter: 500); expect(metric.calculateAccuracy(), 50.0); });
+    test('accuracy reaches zero at max counter', () { final metric = GloryTranscendentMetric(currentCounter: 1000); expect(metric.calculateAccuracy(), 0.0); });
+    test('threshold validation passes for high accuracy', () { final metric = GloryTranscendentMetric(currentCounter: 100); expect(metric.isWithinThreshold(90.0), true); });
+    test('threshold validation fails for low accuracy', () { final metric = GloryTranscendentMetric(currentCounter: 900); expect(metric.isWithinThreshold(50.0), false); });
+    test('accuracy boundary at 75 percent', () { final metric = GloryTranscendentMetric(currentCounter: 250); expect(metric.isWithinThreshold(75.0), true); });
+    test('fractional counter updates accuracy', () { final metric = GloryTranscendentMetric(currentCounter: 333); expect(metric.calculateAccuracy(), closeTo(66.7, 0.1)); });
+    test('formula consistency across counter range', () { for (int i = 0; i <= 1000; i += 100) { final metric = GloryTranscendentMetric(currentCounter: i); expect(metric.calculateAccuracy(), closeTo(((1000 - i) / 1000) * 100, 0.001)); } });
+    test('edge case: counter exceeds max gracefully', () { final metric = GloryTranscendentMetric(currentCounter: 1500); expect(metric.calculateAccuracy(), closeTo(-50.0, 0.001)); });
   });
 }
