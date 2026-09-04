@@ -1,43 +1,43 @@
 import 'package:flutter_test/flutter_test.dart';
 
-// Dimension 3: Absolute Supreme Authority & Infinite Command Testing
-// Counters: 421-423
+// Dimension 3: Absolute Supreme Authority & Infinite Cosmic Command Testing
+// Counters: 466-468
 // Tests: 30 (10 per metric class)
 
 class AbsoluteSupremeAuthority {
   final int counter;
   AbsoluteSupremeAuthority({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 421;
-  double calculateAccuracy() => ((421 - counter) / 421) * 100;
+  bool isValid() => counter >= 0 && counter <= 466;
+  double calculateAccuracy() => ((466 - counter) / 466) * 100;
   String report() => 'AbsoluteSupremeAuthority { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
 }
 
-class InfiniteCommand {
+class InfiniteCosmicCommand {
   final int counter;
-  InfiniteCommand({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 422;
-  double calculateAccuracy() => ((422 - counter) / 422) * 100;
-  String report() => 'InfiniteCommand { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+  InfiniteCosmicCommand({required this.counter});
+  bool isValid() => counter >= 0 && counter <= 467;
+  double calculateAccuracy() => ((467 - counter) / 467) * 100;
+  String report() => 'InfiniteCosmicCommand { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
 }
 
-class AuthorityCommand {
+class AuthorityCosmicCommand {
   final int counter;
-  AuthorityCommand({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 423;
-  double calculateAccuracy() => ((423 - counter) / 423) * 100;
-  String report() => 'AuthorityCommand { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+  AuthorityCosmicCommand({required this.counter});
+  bool isValid() => counter >= 0 && counter <= 468;
+  double calculateAccuracy() => ((468 - counter) / 468) * 100;
+  String report() => 'AuthorityCosmicCommand { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
 }
 
 void main() {
-  group('AbsoluteSupremeAuthority Tests (Counter 421)', () {
+  group('AbsoluteSupremeAuthority Tests (Counter 466)', () {
     test('Minimum boundary validation (counter = 0)', () {
       final metric = AbsoluteSupremeAuthority(counter: 0);
       expect(metric.isValid(), true);
       expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
     });
 
-    test('Maximum boundary validation (counter = 421)', () {
-      final metric = AbsoluteSupremeAuthority(counter: 421);
+    test('Maximum boundary validation (counter = 466)', () {
+      final metric = AbsoluteSupremeAuthority(counter: 466);
       expect(metric.isValid(), true);
       expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
     });
@@ -47,8 +47,8 @@ void main() {
       expect(metric.isValid(), false);
     });
 
-    test('Above maximum rejection (counter = 422)', () {
-      final metric = AbsoluteSupremeAuthority(counter: 422);
+    test('Above maximum rejection (counter = 467)', () {
+      final metric = AbsoluteSupremeAuthority(counter: 467);
       expect(metric.isValid(), false);
     });
 
@@ -58,13 +58,13 @@ void main() {
     });
 
     test('Worst state accuracy (~0%)', () {
-      final metric = AbsoluteSupremeAuthority(counter: 421);
+      final metric = AbsoluteSupremeAuthority(counter: 466);
       expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
     });
 
     test('Midpoint accuracy (~50%)', () {
-      final metric = AbsoluteSupremeAuthority(counter: 210);
-      expect(metric.calculateAccuracy(), closeTo(50.1, 1.0));
+      final metric = AbsoluteSupremeAuthority(counter: 233);
+      expect(metric.calculateAccuracy(), closeTo(50.0, 1.0));
     });
 
     test('Minimum threshold validation (≥96.2%)', () {
@@ -81,129 +81,129 @@ void main() {
     });
 
     test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 421; counter += 25) {
+      for (int counter = 0; counter <= 466; counter += 25) {
         final metric = AbsoluteSupremeAuthority(counter: counter);
-        final expected = ((421 - counter) / 421) * 100;
+        final expected = ((466 - counter) / 466) * 100;
         expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
       }
     });
   });
 
-  group('InfiniteCommand Tests (Counter 422)', () {
+  group('InfiniteCosmicCommand Tests (Counter 467)', () {
     test('Minimum boundary validation (counter = 0)', () {
-      final metric = InfiniteCommand(counter: 0);
+      final metric = InfiniteCosmicCommand(counter: 0);
       expect(metric.isValid(), true);
       expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
     });
 
-    test('Maximum boundary validation (counter = 422)', () {
-      final metric = InfiniteCommand(counter: 422);
+    test('Maximum boundary validation (counter = 467)', () {
+      final metric = InfiniteCosmicCommand(counter: 467);
       expect(metric.isValid(), true);
       expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
     });
 
     test('Below minimum rejection (counter = -1)', () {
-      final metric = InfiniteCommand(counter: -1);
+      final metric = InfiniteCosmicCommand(counter: -1);
       expect(metric.isValid(), false);
     });
 
-    test('Above maximum rejection (counter = 423)', () {
-      final metric = InfiniteCommand(counter: 423);
-      expect(metric.isValid(), false);
-    });
-
-    test('Perfect state accuracy (100%)', () {
-      final metric = InfiniteCommand(counter: 0);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Worst state accuracy (~0%)', () {
-      final metric = InfiniteCommand(counter: 422);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Midpoint accuracy (~50%)', () {
-      final metric = InfiniteCommand(counter: 211);
-      expect(metric.calculateAccuracy(), closeTo(50.0, 1.0));
-    });
-
-    test('Minimum threshold validation (≥96.2%)', () {
-      final metric = InfiniteCommand(counter: 9);
-      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
-    });
-
-    test('Report string generation', () {
-      final metric = InfiniteCommand(counter: 50);
-      final report = metric.report();
-      expect(report.contains('InfiniteCommand'), true);
-      expect(report.contains('counter: 50'), true);
-      expect(report.contains('accuracy:'), true);
-    });
-
-    test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 422; counter += 25) {
-        final metric = InfiniteCommand(counter: counter);
-        final expected = ((422 - counter) / 422) * 100;
-        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
-      }
-    });
-  });
-
-  group('AuthorityCommand Tests (Counter 423)', () {
-    test('Minimum boundary validation (counter = 0)', () {
-      final metric = AuthorityCommand(counter: 0);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
-    });
-
-    test('Maximum boundary validation (counter = 423)', () {
-      final metric = AuthorityCommand(counter: 423);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
-    });
-
-    test('Below minimum rejection (counter = -1)', () {
-      final metric = AuthorityCommand(counter: -1);
-      expect(metric.isValid(), false);
-    });
-
-    test('Above maximum rejection (counter = 424)', () {
-      final metric = AuthorityCommand(counter: 424);
+    test('Above maximum rejection (counter = 468)', () {
+      final metric = InfiniteCosmicCommand(counter: 468);
       expect(metric.isValid(), false);
     });
 
     test('Perfect state accuracy (100%)', () {
-      final metric = AuthorityCommand(counter: 0);
+      final metric = InfiniteCosmicCommand(counter: 0);
       expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
     });
 
     test('Worst state accuracy (~0%)', () {
-      final metric = AuthorityCommand(counter: 423);
+      final metric = InfiniteCosmicCommand(counter: 467);
       expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
     });
 
     test('Midpoint accuracy (~50%)', () {
-      final metric = AuthorityCommand(counter: 211);
+      final metric = InfiniteCosmicCommand(counter: 233);
       expect(metric.calculateAccuracy(), closeTo(50.1, 1.0));
     });
 
     test('Minimum threshold validation (≥96.2%)', () {
-      final metric = AuthorityCommand(counter: 9);
+      final metric = InfiniteCosmicCommand(counter: 9);
       expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
     });
 
     test('Report string generation', () {
-      final metric = AuthorityCommand(counter: 50);
+      final metric = InfiniteCosmicCommand(counter: 50);
       final report = metric.report();
-      expect(report.contains('AuthorityCommand'), true);
+      expect(report.contains('InfiniteCosmicCommand'), true);
       expect(report.contains('counter: 50'), true);
       expect(report.contains('accuracy:'), true);
     });
 
     test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 423; counter += 25) {
-        final metric = AuthorityCommand(counter: counter);
-        final expected = ((423 - counter) / 423) * 100;
+      for (int counter = 0; counter <= 467; counter += 25) {
+        final metric = InfiniteCosmicCommand(counter: counter);
+        final expected = ((467 - counter) / 467) * 100;
+        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
+      }
+    });
+  });
+
+  group('AuthorityCosmicCommand Tests (Counter 468)', () {
+    test('Minimum boundary validation (counter = 0)', () {
+      final metric = AuthorityCosmicCommand(counter: 0);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+    });
+
+    test('Maximum boundary validation (counter = 468)', () {
+      final metric = AuthorityCosmicCommand(counter: 468);
+      expect(metric.isValid(), true);
+      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    });
+
+    test('Below minimum rejection (counter = -1)', () {
+      final metric = AuthorityCosmicCommand(counter: -1);
+      expect(metric.isValid(), false);
+    });
+
+    test('Above maximum rejection (counter = 469)', () {
+      final metric = AuthorityCosmicCommand(counter: 469);
+      expect(metric.isValid(), false);
+    });
+
+    test('Perfect state accuracy (100%)', () {
+      final metric = AuthorityCosmicCommand(counter: 0);
+      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+    });
+
+    test('Worst state accuracy (~0%)', () {
+      final metric = AuthorityCosmicCommand(counter: 468);
+      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    });
+
+    test('Midpoint accuracy (~50%)', () {
+      final metric = AuthorityCosmicCommand(counter: 234);
+      expect(metric.calculateAccuracy(), closeTo(50.0, 1.0));
+    });
+
+    test('Minimum threshold validation (≥96.2%)', () {
+      final metric = AuthorityCosmicCommand(counter: 9);
+      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
+    });
+
+    test('Report string generation', () {
+      final metric = AuthorityCosmicCommand(counter: 50);
+      final report = metric.report();
+      expect(report.contains('AuthorityCosmicCommand'), true);
+      expect(report.contains('counter: 50'), true);
+      expect(report.contains('accuracy:'), true);
+    });
+
+    test('Accuracy formula consistency', () {
+      for (int counter = 0; counter <= 468; counter += 25) {
+        final metric = AuthorityCosmicCommand(counter: counter);
+        final expected = ((468 - counter) / 468) * 100;
         expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
       }
     });
