@@ -1,211 +1,165 @@
 import 'package:flutter_test/flutter_test.dart';
 
-// Dimension 4: Perfect Boundless Sovereignty & Ultimate Infinite Glory Testing
-// Counters: 409-411
-// Tests: 30 (10 per metric class)
-
 class PerfectBoundlessSovereignty {
-  final int counter;
-  PerfectBoundlessSovereignty({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 409;
-  double calculateAccuracy() => ((409 - counter) / 409) * 100;
-  String report() => 'PerfectBoundlessSovereignty { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+  static const int maxCounter = 1000;
+  int currentCounter;
+  PerfectBoundlessSovereignty({this.currentCounter = 0});
+  double calculateAccuracy() => ((maxCounter - currentCounter) / maxCounter) * 100;
+  bool isWithinThreshold(double threshold) => calculateAccuracy() >= threshold;
 }
 
-class UltimateInfiniteGlory {
-  final int counter;
-  UltimateInfiniteGlory({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 410;
-  double calculateAccuracy() => ((410 - counter) / 410) * 100;
-  String report() => 'UltimateInfiniteGlory { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+class BoundlessSovereigntyPerfect {
+  static const int maxCounter = 1000;
+  int currentCounter;
+  BoundlessSovereigntyPerfect({this.currentCounter = 0});
+  double calculateAccuracy() => ((maxCounter - currentCounter) / maxCounter) * 100;
+  bool isWithinThreshold(double threshold) => calculateAccuracy() >= threshold;
 }
 
-class SovereignGlory {
-  final int counter;
-  SovereignGlory({required this.counter});
-  bool isValid() => counter >= 0 && counter <= 411;
-  double calculateAccuracy() => ((411 - counter) / 411) * 100;
-  String report() => 'SovereignGlory { counter: $counter, accuracy: ${calculateAccuracy().toStringAsFixed(2)}%, validation: ${isValid()} }';
+class SovereigntyPerfectBoundless {
+  static const int maxCounter = 1000;
+  int currentCounter;
+  SovereigntyPerfectBoundless({this.currentCounter = 0});
+  double calculateAccuracy() => ((maxCounter - currentCounter) / maxCounter) * 100;
+  bool isWithinThreshold(double threshold) => calculateAccuracy() >= threshold;
 }
 
 void main() {
-  group('PerfectBoundlessSovereignty Tests (Counter 409)', () {
-    test('Minimum boundary validation (counter = 0)', () {
-      final metric = PerfectBoundlessSovereignty(counter: 0);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+  group('PerfectBoundlessSovereignty', () {
+    test('initializes with default counter', () {
+      final metric = PerfectBoundlessSovereignty();
+      expect(metric.currentCounter, 0);
+      expect(metric.calculateAccuracy(), 100.0);
     });
-
-    test('Maximum boundary validation (counter = 409)', () {
-      final metric = PerfectBoundlessSovereignty(counter: 409);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    test('initializes with custom counter', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 250);
+      expect(metric.calculateAccuracy(), 75.0);
     });
-
-    test('Below minimum rejection (counter = -1)', () {
-      final metric = PerfectBoundlessSovereignty(counter: -1);
-      expect(metric.isValid(), false);
+    test('calculates accuracy correctly', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 500);
+      expect(metric.calculateAccuracy(), 50.0);
     });
-
-    test('Above maximum rejection (counter = 410)', () {
-      final metric = PerfectBoundlessSovereignty(counter: 410);
-      expect(metric.isValid(), false);
+    test('accuracy reaches zero at max counter', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 1000);
+      expect(metric.calculateAccuracy(), 0.0);
     });
-
-    test('Perfect state accuracy (100%)', () {
-      final metric = PerfectBoundlessSovereignty(counter: 0);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+    test('threshold validation passes for high accuracy', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 100);
+      expect(metric.isWithinThreshold(90.0), true);
     });
-
-    test('Worst state accuracy (~0%)', () {
-      final metric = PerfectBoundlessSovereignty(counter: 409);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    test('threshold validation fails for low accuracy', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 900);
+      expect(metric.isWithinThreshold(50.0), false);
     });
-
-    test('Midpoint accuracy (~50%)', () {
-      final metric = PerfectBoundlessSovereignty(counter: 204);
-      expect(metric.calculateAccuracy(), closeTo(50.1, 1.0));
+    test('accuracy boundary at 75 percent', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 250);
+      expect(metric.isWithinThreshold(75.0), true);
     });
-
-    test('Minimum threshold validation (≥96.2%)', () {
-      final metric = PerfectBoundlessSovereignty(counter: 9);
-      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
+    test('fractional counter updates accuracy', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 333);
+      expect(metric.calculateAccuracy(), closeTo(66.7, 0.1));
     });
-
-    test('Report string generation', () {
-      final metric = PerfectBoundlessSovereignty(counter: 50);
-      final report = metric.report();
-      expect(report.contains('PerfectBoundlessSovereignty'), true);
-      expect(report.contains('counter: 50'), true);
-      expect(report.contains('accuracy:'), true);
-    });
-
-    test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 409; counter += 25) {
-        final metric = PerfectBoundlessSovereignty(counter: counter);
-        final expected = ((409 - counter) / 409) * 100;
-        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
+    test('formula consistency across counter range', () {
+      for (int i = 0; i <= 1000; i += 100) {
+        final metric = PerfectBoundlessSovereignty(currentCounter: i);
+        expect(metric.calculateAccuracy(), closeTo(((1000 - i) / 1000) * 100, 0.001));
       }
+    });
+    test('edge case: counter exceeds max gracefully', () {
+      final metric = PerfectBoundlessSovereignty(currentCounter: 1500);
+      expect(metric.calculateAccuracy(), closeTo(-50.0, 0.001));
     });
   });
 
-  group('UltimateInfiniteGlory Tests (Counter 410)', () {
-    test('Minimum boundary validation (counter = 0)', () {
-      final metric = UltimateInfiniteGlory(counter: 0);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+  group('BoundlessSovereigntyPerfect', () {
+    test('initializes with default counter', () {
+      final metric = BoundlessSovereigntyPerfect();
+      expect(metric.currentCounter, 0);
+      expect(metric.calculateAccuracy(), 100.0);
     });
-
-    test('Maximum boundary validation (counter = 410)', () {
-      final metric = UltimateInfiniteGlory(counter: 410);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    test('initializes with custom counter', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 250);
+      expect(metric.calculateAccuracy(), 75.0);
     });
-
-    test('Below minimum rejection (counter = -1)', () {
-      final metric = UltimateInfiniteGlory(counter: -1);
-      expect(metric.isValid(), false);
+    test('calculates accuracy correctly', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 500);
+      expect(metric.calculateAccuracy(), 50.0);
     });
-
-    test('Above maximum rejection (counter = 411)', () {
-      final metric = UltimateInfiniteGlory(counter: 411);
-      expect(metric.isValid(), false);
+    test('accuracy reaches zero at max counter', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 1000);
+      expect(metric.calculateAccuracy(), 0.0);
     });
-
-    test('Perfect state accuracy (100%)', () {
-      final metric = UltimateInfiniteGlory(counter: 0);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+    test('threshold validation passes for high accuracy', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 100);
+      expect(metric.isWithinThreshold(90.0), true);
     });
-
-    test('Worst state accuracy (~0%)', () {
-      final metric = UltimateInfiniteGlory(counter: 410);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    test('threshold validation fails for low accuracy', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 900);
+      expect(metric.isWithinThreshold(50.0), false);
     });
-
-    test('Midpoint accuracy (~50%)', () {
-      final metric = UltimateInfiniteGlory(counter: 205);
-      expect(metric.calculateAccuracy(), closeTo(50.0, 1.0));
+    test('accuracy boundary at 75 percent', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 250);
+      expect(metric.isWithinThreshold(75.0), true);
     });
-
-    test('Minimum threshold validation (≥96.2%)', () {
-      final metric = UltimateInfiniteGlory(counter: 9);
-      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
+    test('fractional counter updates accuracy', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 333);
+      expect(metric.calculateAccuracy(), closeTo(66.7, 0.1));
     });
-
-    test('Report string generation', () {
-      final metric = UltimateInfiniteGlory(counter: 50);
-      final report = metric.report();
-      expect(report.contains('UltimateInfiniteGlory'), true);
-      expect(report.contains('counter: 50'), true);
-      expect(report.contains('accuracy:'), true);
-    });
-
-    test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 410; counter += 25) {
-        final metric = UltimateInfiniteGlory(counter: counter);
-        final expected = ((410 - counter) / 410) * 100;
-        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
+    test('formula consistency across counter range', () {
+      for (int i = 0; i <= 1000; i += 100) {
+        final metric = BoundlessSovereigntyPerfect(currentCounter: i);
+        expect(metric.calculateAccuracy(), closeTo(((1000 - i) / 1000) * 100, 0.001));
       }
+    });
+    test('edge case: counter exceeds max gracefully', () {
+      final metric = BoundlessSovereigntyPerfect(currentCounter: 1500);
+      expect(metric.calculateAccuracy(), closeTo(-50.0, 0.001));
     });
   });
 
-  group('SovereignGlory Tests (Counter 411)', () {
-    test('Minimum boundary validation (counter = 0)', () {
-      final metric = SovereignGlory(counter: 0);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+  group('SovereigntyPerfectBoundless', () {
+    test('initializes with default counter', () {
+      final metric = SovereigntyPerfectBoundless();
+      expect(metric.currentCounter, 0);
+      expect(metric.calculateAccuracy(), 100.0);
     });
-
-    test('Maximum boundary validation (counter = 411)', () {
-      final metric = SovereignGlory(counter: 411);
-      expect(metric.isValid(), true);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    test('initializes with custom counter', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 250);
+      expect(metric.calculateAccuracy(), 75.0);
     });
-
-    test('Below minimum rejection (counter = -1)', () {
-      final metric = SovereignGlory(counter: -1);
-      expect(metric.isValid(), false);
+    test('calculates accuracy correctly', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 500);
+      expect(metric.calculateAccuracy(), 50.0);
     });
-
-    test('Above maximum rejection (counter = 412)', () {
-      final metric = SovereignGlory(counter: 412);
-      expect(metric.isValid(), false);
+    test('accuracy reaches zero at max counter', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 1000);
+      expect(metric.calculateAccuracy(), 0.0);
     });
-
-    test('Perfect state accuracy (100%)', () {
-      final metric = SovereignGlory(counter: 0);
-      expect(metric.calculateAccuracy(), closeTo(100.0, 0.1));
+    test('threshold validation passes for high accuracy', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 100);
+      expect(metric.isWithinThreshold(90.0), true);
     });
-
-    test('Worst state accuracy (~0%)', () {
-      final metric = SovereignGlory(counter: 411);
-      expect(metric.calculateAccuracy(), closeTo(0.0, 0.1));
+    test('threshold validation fails for low accuracy', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 900);
+      expect(metric.isWithinThreshold(50.0), false);
     });
-
-    test('Midpoint accuracy (~50%)', () {
-      final metric = SovereignGlory(counter: 205);
-      expect(metric.calculateAccuracy(), closeTo(50.1, 1.0));
+    test('accuracy boundary at 75 percent', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 250);
+      expect(metric.isWithinThreshold(75.0), true);
     });
-
-    test('Minimum threshold validation (≥96.2%)', () {
-      final metric = SovereignGlory(counter: 9);
-      expect(metric.calculateAccuracy(), greaterThanOrEqualTo(96.2));
+    test('fractional counter updates accuracy', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 333);
+      expect(metric.calculateAccuracy(), closeTo(66.7, 0.1));
     });
-
-    test('Report string generation', () {
-      final metric = SovereignGlory(counter: 50);
-      final report = metric.report();
-      expect(report.contains('SovereignGlory'), true);
-      expect(report.contains('counter: 50'), true);
-      expect(report.contains('accuracy:'), true);
-    });
-
-    test('Accuracy formula consistency', () {
-      for (int counter = 0; counter <= 411; counter += 25) {
-        final metric = SovereignGlory(counter: counter);
-        final expected = ((411 - counter) / 411) * 100;
-        expect(metric.calculateAccuracy(), closeTo(expected, 0.01));
+    test('formula consistency across counter range', () {
+      for (int i = 0; i <= 1000; i += 100) {
+        final metric = SovereigntyPerfectBoundless(currentCounter: i);
+        expect(metric.calculateAccuracy(), closeTo(((1000 - i) / 1000) * 100, 0.001));
       }
+    });
+    test('edge case: counter exceeds max gracefully', () {
+      final metric = SovereigntyPerfectBoundless(currentCounter: 1500);
+      expect(metric.calculateAccuracy(), closeTo(-50.0, 0.001));
     });
   });
 }
